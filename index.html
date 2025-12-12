@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/animations.css">  
+    <link rel="stylesheet" href="css/main.css">  
+    <link rel="stylesheet" href="css/index.css">
+    <title>Eye Center</title>
+    <style> 
+        table{
+            animation: transitionIn-Y-bottom 0.5s;
+        }
+        html{ scroll-behavior: smooth; scroll-padding-top: 72px; }
+        /* Sticky site nav */
+        .site-nav{ position: sticky; top:0; z-index: 1000; backdrop-filter: blur(6px); background: rgba(15,23,42,.45); border-bottom:1px solid rgba(255,255,255,.08); }
+        .site-nav-inner{ max-width: 1200px; margin: 0 auto; display:flex; align-items:center; justify-content:space-between; gap:16px; padding:12px 16px; }
+        .brand{ color:#fff; font-weight:700; font-size:20px; }
+        .brand-sub{ color:#cbd5e1; font-size:12px; margin-left:6px; }
+        .top-links{ display:inline-flex; gap:10px; align-items:center; flex-wrap:wrap; }
+        .pill-link{ padding:8px 14px; border-radius:999px; background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.22); color:#f8fafc; font-weight:600; transition:all .2s ease; text-decoration:none; backdrop-filter: blur(4px); white-space:nowrap; }
+        .pill-link:hover{ background:rgba(255,255,255,.22); transform: translateY(-1px); box-shadow:0 6px 16px rgba(0,0,0,.18); }
+        .pill-link.active{ background:#22d3ee; border-color:#22d3ee; color:#0b1020; box-shadow:0 8px 18px rgba(34,211,238,.35); }
+        .auth a{ color:#e2e8f0; text-decoration:none; margin-left:16px; font-weight:600; }
+        .auth a:hover{ color:#fff; }
+        /* Top nav pills */
+        .section{ max-width:1100px; margin:80px auto; padding:30px 20px; background:#fff; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,.08); }
+        .section h2{ margin:0 0 10px; }
+        .section p{ color:#555; }
+        .muted{ color:#6b7280; }
+        .cards{ display:grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap:16px; margin-top:16px; }
+        .card{ background:#f8fafc; border:1px solid #eef2f7; border-radius:12px; padding:16px; transition:transform .15s ease, box-shadow .2s ease; }
+        .card:hover{ transform: translateY(-3px); box-shadow:0 12px 24px rgba(0,0,0,.1); }
+        .contact-grid{ display:grid; grid-template-columns:1fr; gap:10px; }
+        @media (min-width: 768px){ .contact-grid{ grid-template-columns: 1fr 1fr; } }
+
+        /* Simple FAQ accordion */
+        .faq{ margin-top:18px; border-top:1px solid #eef2f7; }
+        .faq-item{ border-bottom:1px solid #eef2f7; }
+        .faq-q{ cursor:pointer; padding:12px 8px; font-weight:600; display:flex; justify-content:space-between; align-items:center; }
+        .faq-a{ padding:0 8px 12px; color:#555; display:none; }
+        .faq-item.open .faq-a{ display:block; }
+        .faq-item .chev{ transition: transform .2s ease; }
+        .faq-item.open .chev{ transform: rotate(180deg); }
+        
+        /* Mobile responsive fixes */
+        @media (max-width: 768px) {
+            .site-nav-inner {
+                flex-direction: column;
+                gap: 12px;
+                padding: 16px 12px;
+            }
+            
+            .brand {
+                font-size: 18px;
+            }
+            
+            .brand-sub {
+                font-size: 11px;
+                display: block;
+                margin-left: 0;
+                margin-top: 2px;
+            }
+            
+            .top-links {
+                order: 2;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+            
+            .pill-link {
+                padding: 6px 12px;
+                font-size: 14px;
+            }
+            
+            .auth {
+                order: 3;
+                display: flex;
+                gap: 12px;
+                justify-content: center;
+            }
+            
+            .auth a {
+                margin-left: 0;
+                font-size: 14px;
+                padding: 8px 16px;
+                background: rgba(255,255,255,.1);
+                border-radius: 6px;
+                border: 1px solid rgba(255,255,255,.2);
+                transition: all .2s ease;
+            }
+            
+            .auth a:hover {
+                background: rgba(255,255,255,.2);
+                transform: translateY(-1px);
+            }
+            
+            .section {
+                margin: 40px auto;
+                padding: 20px 16px;
+            }
+            
+            .cards {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+            
+            .card {
+                padding: 14px;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .full-height {
+                padding: 20px 16px;
+            }
+            
+            .heading-text {
+                font-size: 28px !important;
+                line-height: 1.2 !important;
+            }
+            
+            .sub-text2 {
+                font-size: 16px !important;
+                line-height: 1.4 !important;
+                padding: 0 10px !important;
+            }
+            
+            .login-btn {
+                padding: 12px 24px !important;
+                font-size: 16px !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .site-nav-inner {
+                padding: 12px 8px;
+            }
+            
+            .brand {
+                font-size: 16px;
+            }
+            
+            .pill-link {
+                padding: 5px 10px;
+                font-size: 13px;
+            }
+            
+            .auth a {
+                padding: 6px 12px;
+                font-size: 13px;
+            }
+            
+            .heading-text {
+                font-size: 24px !important;
+            }
+            
+            .sub-text2 {
+                font-size: 14px !important;
+            }
+        }
+    </style>
+        
+</head>
+<body>
+    
+    <div class="site-nav">
+        <div class="site-nav-inner">
+            <div>
+                <span class="brand">EyeCare.</span>
+                <span class="brand-sub">| SAD WEB-BASED SYSTEM</span>
+            </div>
+            <div class="top-links">
+                <a href="#home" class="pill-link" id="link-home">Home</a>
+                <a href="#about" class="pill-link" id="link-about">About Us</a>
+                <a href="#services" class="pill-link" id="link-services">Services</a>
+                <a href="#contact" class="pill-link" id="link-contact">Contact Us</a>
+            </div>
+            <div class="auth">
+                <a href="http://localhost/AppoinmentBackupNonOnline/login.php">LOGIN</a>
+                <a href="http://localhost/AppoinmentBackupNonOnline/signup.php">REGISTER</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="full-height">
+        <center>
+        <table border="0" id="home">    
+            <tr class="legacy-top-row" style="display:none">
+                <td colspan="4"></td>
+            </tr>
+            
+            <tr>
+                <td  colspan="3">
+                    <p class="heading-text">Avoid Hassles & Delays.</p>
+
+                </td>
+            </tr>
+            <tr>
+                <td  colspan="3">
+                    <p class="sub-text2">How is health today, Sounds like not good!<br>Don't worry. You can make an appoinment online and we'll guide you. <br>
+                    We offer you a free eye check up service, Make your appointment now.</p>
+                </td>
+            </tr>
+            <tr>
+                
+                <td colspan="3">
+                    <center>
+                    <a href="http://localhost/AppoinmentBackupNonOnline/login.php" >
+                        <input type="button" value="Make Appointment" class="login-btn btn-primary btn" style="padding-left: 25px;padding-right: 25px;padding-top: 10px;padding-bottom: 10px;">
+                    </a>
+                </center>
+                </td>
+                
+            </tr>
+            <tr>
+                <td colspan="3">
+                   
+                </td>
+            </tr>
+        </table>
+        </center>
+    </div>
+        
+        <!-- About Section -->
+        <div id="about" class="section fade-in">
+            <h2>About Us</h2>
+            <p>We are dedicated to making eye care simple and accessible. Our clinicians combine modern diagnostics with patient-first service so you can book, arrive, and get the care you need—without hassle.</p>
+            <ul class="muted" style="margin:8px 0 0 18px; line-height:1.7">
+                <li>Online booking and reminders</li>
+                <li>Licensed and experienced ophthalmologists</li>
+                <li>Clean, safe, and friendly clinic environment</li>
+            </ul>
+        </div>
+
+        <!-- Services Section -->
+        <div id="services" class="section pop-in">
+            <h2>Services</h2>
+            <div class="cards">
+                <div class="card">
+                    <h3>Eye Examination</h3>
+                    <p>Comprehensive checks to assess vision and eye health.</p>
+                </div>
+                <div class="card">
+                    <h3>Cataract Screening</h3>
+                    <p>Early detection and guidance from certified professionals.</p>
+                </div>
+                <div class="card">
+                    <h3>Pediatric Eye Care</h3>
+                    <p>Gentle care for the youngest patients and their families.</p>
+                </div>
+                <div class="card">
+                    <h3>Follow-up & Post-op</h3>
+                    <p>Structured follow-ups to ensure proper recovery.</p>
+                </div>
+                <div class="card">
+                    <h3>Emergency Care</h3>
+                    <p>Foreign body removal and urgent consultations.</p>
+                </div>
+                <div class="card">
+                    <h3>Color Vision Testing</h3>
+                    <p>Quick assessments for occupational or school requirements.</p>
+                </div>
+            </div>
+
+            <div class="faq">
+                <div class="faq-item">
+                    <div class="faq-q">How do I book an appointment? <span class="chev">▾</span></div>
+                    <div class="faq-a">Click “Make Appointment” on the homepage and sign in (or create an account). Choose a date, time, and service—done in under a minute.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">What should I bring? <span class="chev">▾</span></div>
+                    <div class="faq-a">A valid ID and any relevant medical records or prescriptions. For new patients, please arrive 10 minutes early.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">Can I reschedule? <span class="chev">▾</span></div>
+                    <div class="faq-a">Yes. You can cancel or reschedule from your account page, subject to availability.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Section -->
+        <div id="contact" class="section slide-in">
+            <h2>Contact Us</h2>
+            <div class="contact-grid">
+                <p>
+                    <strong>Address:</strong>5X3M+2QR, Quezon Ave, Alaminos City, 2404 Pangasinan<br>
+                    <strong>Email:</strong> PangasinanEyecenterph@gmail.com<br>
+                    <strong>Phone:</strong> (+63) 977-827-2020
+                </p>
+                <div>
+                    <p class="muted" style="margin:0 0 6px">Clinic Hours</p>
+                    <ul class="muted" style="margin:0 0 10px 18px; line-height:1.8">
+                        <li>Mon–Fri: 8:00 AM – 5:00 PM</li>
+                        <li>Sat: 9:00 AM – 2:00 PM</li>
+                        <li>Sun: Closed</li>
+                    </ul>
+                    <p class="muted">Follow us on <a href="https://web.facebook.com/pangasinaneyecenteralaminos2021" style="text-decoration:underline">Facebook</a> for updates.</p>
+                </div>
+            </div>
+        </div>
+        <p class="sub-text2 footer-hashen">Pangasinan Eye Center.</p>
+    <script>
+    // Active state on scroll for pill links
+    (function(){
+        var sections = [
+            {id:'home', link:'link-home'},
+            {id:'about', link:'link-about'},
+            {id:'services', link:'link-services'},
+            {id:'contact', link:'link-contact'}
+        ];
+        function onScroll(){
+            var scrollPos = window.scrollY + 90; // offset for sticky nav
+            var found = null;
+            for (var i=0;i<sections.length;i++){
+                var s = sections[i];
+                var el = document.getElementById(s.id);
+                if(!el) continue;
+                if (el.offsetTop <= scrollPos && (el.offsetTop + el.offsetHeight) > scrollPos){
+                    found = s; break;
+                }
+            }
+            sections.forEach(function(s){
+                var link = document.getElementById(s.link);
+                if(!link) return;
+                if (found && s.id === found.id) link.classList.add('active');
+                else link.classList.remove('active');
+            });
+        }
+        window.addEventListener('scroll', onScroll);
+        window.addEventListener('load', onScroll);
+    })();
+    // FAQ toggle
+    (function(){
+        var qs = document.querySelectorAll('.faq-q');
+        qs.forEach(function(q){
+            q.addEventListener('click', function(){
+                var item = q.parentElement;
+                if (item.classList.contains('open')) item.classList.remove('open');
+                else item.classList.add('open');
+            });
+        });
+    })();
+    </script>
+</body>
+</html>
