@@ -1,0 +1,112 @@
+
+body{
+    margin: 7%;
+    background-color: #F6F7FA;
+    user-select: none;
+}
+
+
+
+.container{
+    width: 45%;
+    background-color: white;
+    border: 1px solid rgb(235, 235, 235);
+    border-radius: 8px;
+    margin: 0;
+    padding: 0;
+    box-shadow: 0 3px 5px 0 rgba(240, 240, 240, 0.3);
+    animation: transitionIn-Y-over 0.5s;
+    user-select: none;
+}
+td{
+    text-align: center;
+    user-select: none;
+}
+.header-text{
+    font-weight: 600;
+    font-size: 30px;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    user-select: none;
+}
+
+.sub-text{
+    font-size: 15px;
+    color: rgb(138, 138, 138);
+    user-select: none;
+}
+
+.form-label{
+    color: rgb(44, 44, 44);
+    text-align: left;
+    font-size: 14px;
+    user-select: none;
+}
+.label-td{
+    text-align: left;
+    padding-top: 10px;
+    user-select: none;
+}
+
+.hover-link1{
+    font-weight: bold;
+    user-select: none;
+}
+
+
+.hover-link1:hover{
+    opacity: 0.8;
+    transition: 0.5s;
+    user-select: none;
+}
+.login-btn{
+    /*margin-top: 15px;*/
+    margin-bottom: 15px;
+    width: 100%;
+}
+/* Fancy buttons hover animations */
+.btn-primary,
+.btn-secondary{
+	transition: transform .12s ease, box-shadow .2s ease, background-position .25s ease, opacity .2s ease;
+}
+.btn-primary{
+	background-image: linear-gradient(135deg, #1366d6 0%, #0f5ac0 50%, #0b4aa0 100%);
+	background-size: 200% 200%;
+}
+.btn-primary:hover{
+	transform: translateY(-1px);
+	box-shadow: 0 10px 22px rgba(19,102,214,.35);
+	background-position: 100% 0;
+}
+.btn-primary:active{ transform: translateY(0); box-shadow: 0 6px 14px rgba(0,0,0,.16); }
+
+.btn-secondary{
+	background-image: linear-gradient(135deg, #ffffff 0%, #f3f4f6 100%);
+	border: 1px solid #e5e7eb;
+	color: #374151;
+}
+.btn-secondary:hover{
+	transform: translateY(-1px);
+	box-shadow: 0 10px 22px rgba(0,0,0,.12);
+	background-image: linear-gradient(135deg, #ffffff 0%, #eaecef 100%);
+}
+.btn-secondary:active{ transform: translateY(0); box-shadow: 0 6px 14px rgba(0,0,0,.12); }
+
+/* Responsive adjustments for login, signup, forgot-password layouts */
+@media (max-width: 992px){
+    body{ margin: 4%; }
+    .container{ width: 70%; }
+    .header-text{ font-size: 26px; }
+}
+@media (max-width: 768px){
+    body{ margin: 3%; }
+    .container{ width: 90%; }
+    .header-text{ font-size: 24px; letter-spacing: 0; }
+    .sub-text{ font-size: 14px; }
+}
+@media (max-width: 480px){
+    body{ margin: 2%; }
+    .container{ width: 96%; border-radius: 6px; }
+    .header-text{ font-size: 22px; }
+    .form-label{ font-size: 13px; }
+}
