@@ -80,3 +80,6 @@ o	Re-import updated SQL scripts if database changes are included.
 3.	Password Security
 o	Advise all users to change passwords regularly.
 o	Use strong passwords with letters, numbers, and symbols.
+
+Credits to Githb:@HashenUdara for the UI design and logics. This is the improvised version of the system.
+Visit @HashenUdara - edoc-doctor-appointment-system here in Github
